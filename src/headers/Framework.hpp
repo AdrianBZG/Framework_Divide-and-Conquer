@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Problem.h"
 #include "Solution.h"
+
 using namespace std;
 
 class Framework {
