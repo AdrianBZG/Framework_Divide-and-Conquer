@@ -9,10 +9,7 @@
 #include <cstdlib>
 
 //Include the mandatory files to use the Framework
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include "headers/Framework.h"
+#include "headers/Framework.hpp"
 //
 
 using namespace std;
