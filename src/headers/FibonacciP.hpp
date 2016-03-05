@@ -7,8 +7,8 @@
 #ifndef _FIBONACCIP_HPP_
 #define _FIBONACCIP_HPP_
 
-#include "Problem.h"
-#include "FibonacciS.h"
+#include "Problem.hpp"
+#include "FibonacciS.hpp"
 
 class FibonacciP: public Problem {
     private:

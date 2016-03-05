@@ -7,7 +7,7 @@
 #ifndef _FIBONACCIS_HPP_
 #define _FIBONACCIS_HPP_
 
-#include "../framework/Solucion.h"
+#include "Solution.hpp"
 
 class FibonacciS: public Solution {
     private:
