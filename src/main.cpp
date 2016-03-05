@@ -18,6 +18,10 @@
 #include "headers/MergeSortS.hpp"
 //
 
+//BubbleSort (Not using framework, cause not using Divide and Conquer approach)
+#include "headers/BubbleSort.hpp"
+//
+
 using namespace std;
 
 int main(int argc, char **argv) {
@@ -34,6 +38,12 @@ int main(int argc, char **argv) {
 	Framework* framework = new Framework();
 
 	framework->divideAndConquer(problem, solution);
-	cout << "\nResult:" << endl;
+	cout << "\nResult (MergeSort):" << endl;
 	solution->solve();
+	
+	
+	BubbleSort bs(arrayToSort);
+	bs.sort();
+	cout << "\nResult (BubbleSort):" << endl;
+	bs.print();
 }
