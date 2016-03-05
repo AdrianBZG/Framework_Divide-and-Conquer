@@ -15,6 +15,6 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-    Framework* framework = new Framework();
+    //Framework* framework = new Framework();
     cout << "Hello" << endl;
 }

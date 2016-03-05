@@ -21,7 +21,7 @@ OBJECTS=$(OBJ_DIR)/main.o \
 	$(OBJ_DIR)/Solution.o \
 
 # Flags
-CXXFLAGS = -std=c++11 -I.
+CXXFLAGS = -g -O2 -std=c++11 -I.
 
 # Default target (to build all)
 all: ${TARGET}

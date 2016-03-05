@@ -10,8 +10,8 @@
 #include <vector>
 #include <utility>
 #include <iostream>
-#include "Problem.h"
-#include "Solution.h"
+#include "Problem.hpp"
+#include "Solution.hpp"
 
 using namespace std;
 
