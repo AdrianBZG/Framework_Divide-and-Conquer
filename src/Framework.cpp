@@ -22,8 +22,8 @@ void Framework::divideAndConquer(Problem* p, Solution* s){
 		subProblems = p->decompose();
 		subSolutions.first = s->getInstance();
 		subSolutions.second = s->getInstance();
-		divideyVenceras(subProblems.first, subSolutions.first);  //.1
-		divideyVenceras(subProblems.second, subSolutions.second);  //.2
+		divideAndConquer(subProblems.first, subSolutions.first);  //.1
+		divideAndConquer(subProblems.second, subSolutions.second);  //.2
 		s->combine(subSolutions);
 	}
 };

@@ -15,7 +15,7 @@ Problem::~Problem() {
 bool Problem::isSimple() {
 }
 
-pair<Problem*,Problem*> Problema::decompose() {
+pair<Problem*,Problem*> Problem::decompose() {
 }
 
 void Problem::simplySolve(Solution* s) {
