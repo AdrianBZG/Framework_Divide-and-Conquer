@@ -17,8 +17,9 @@ MergeSortS::~MergeSortS() {
 
 void MergeSortS::solve() {
 	for(auto element : array_) {
-		cout << element << endl;
+		cout << element << " ";
 	}
+	cout << endl;
 }
 
 void MergeSortS::combine(pair<Solution*,Solution*> subSolutions) {
@@ -32,9 +33,13 @@ void MergeSortS::combine(pair<Solution*,Solution*> subSolutions) {
 	//Temp vars
 	unsigned i = 0;
 	unsigned j = 0;
+	unsigned size = (a1.size()-1) + (a2.size()-1);
+	//
+	//Resize the solution array
+	array_.resize(size);
 	//
 	
-	for(unsigned k=0; k < ((a1.size()-1) + (a2.size()-1)); k++)
+	for(unsigned k=0; k < size; k++)
 	{
 		if((a1[i] < a2[j]))
 		{

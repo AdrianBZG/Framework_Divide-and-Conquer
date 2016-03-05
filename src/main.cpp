@@ -14,18 +14,23 @@
 //Include the specific problems implementations
 #include "headers/FibonacciP.hpp"
 #include "headers/FibonacciS.hpp"
+#include "headers/MergeSortP.hpp"
+#include "headers/MergeSortS.hpp"
 //
 
 using namespace std;
 
 int main(int argc, char **argv) {
+    
+	/*
+	//THIS IS USED TO CHECK PARAMETERS IN CASE WE NEED THEM
 	if (argc != 2) {
 		cout << "\nIncorrect number of parameters. Found: " << argc-1 << ". Required: 1"<< endl;
 		exit(-1);
-	}
-
-	Problem* problem = new FibonacciP(atoi(argv[1]));
-	Solution* solution = new FibonacciS();
+	}*/
+    vector<int> arrayToSort = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3};
+	Problem* problem = new MergeSortP(arrayToSort);
+	Solution* solution = new MergeSortS();
 	Framework* framework = new Framework();
 
 	framework->divideAndConquer(problem, solution);
