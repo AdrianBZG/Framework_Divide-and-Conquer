@@ -1,5 +1,5 @@
 # Target executable name
-TARGET = ./compiled/RAMmachine
+TARGET = ./compiled/DCframework
 
 #OBJ directory
 OBJ_DIR=../obj
@@ -11,22 +11,14 @@ SRC_DIR=.
 CXX=g++
 
 # Source files
-SOURCES = main.cpp UI.cpp RAMmachine.cpp Program.cpp Memory.cpp Register.cpp Instruction.cpp Tag.cpp PC.cpp Tape.cpp InTape.cpp OutTape.cpp
+SOURCES = main.cpp Framework.cpp Problem.cpp Solution.cpp
 
 # Work out names of object files from sources
 #OBJECTS = $(SOURCES:.cpp=.o)
 OBJECTS=$(OBJ_DIR)/main.o \
-	$(OBJ_DIR)/UI.o \
-	$(OBJ_DIR)/RAMmachine.o \
-	$(OBJ_DIR)/Program.o \
-	$(OBJ_DIR)/Memory.o \
-	$(OBJ_DIR)/Register.o \
-	$(OBJ_DIR)/Tape.o \
-	$(OBJ_DIR)/InTape.o \
-	$(OBJ_DIR)/OutTape.o \
-	$(OBJ_DIR)/Instruction.o \
-	$(OBJ_DIR)/PC.o \
-	$(OBJ_DIR)/Tag.o \
+	$(OBJ_DIR)/Framework.o \
+	$(OBJ_DIR)/Problem.o \
+	$(OBJ_DIR)/Solution.o \
 
 # Flags
 CXXFLAGS = -std=c++11 -I.
@@ -47,14 +39,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 		$(CXX) -c -o $@ $(CXXFLAGS) $<
 
 # Header dependencies
-$(OBJ_DIR)/RAMmachine.o: headers/RAMmachine.hpp
-$(OBJ_DIR)/RAMmachine.o: headers/UI.hpp
-$(OBJ_DIR)/Program.o: headers/Program.hpp
-$(OBJ_DIR)/Memory.o: headers/Memory.hpp
-$(OBJ_DIR)/Register.o: headers/Register.hpp
-$(OBJ_DIR)/Instruction.o: headers/Instruction.hpp
-$(OBJ_DIR)/Tag.o: headers/Tag.hpp
-$(OBJ_DIR)/PC.o: headers/PC.hpp
-$(OBJ_DIR)/Tape.o: headers/Tape.hpp
-$(OBJ_DIR)/InTape.o: headers/InTape.hpp
-$(OBJ_DIR)/OutTape.o: headers/OutTape.hpp
+$(OBJ_DIR)/Framework.o: headers/Framework.hpp
+$(OBJ_DIR)/Problem.o: headers/Problem.hpp
+$(OBJ_DIR)/Solution.o: headers/Solution.hpp
