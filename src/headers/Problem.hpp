@@ -19,9 +19,9 @@ class Problem {
 	    Problem();
 	    virtual ~Problem();
 
-	    virtual bool isBasicCase();
+	    virtual bool isSimple();
 	    virtual pair<Problem*,Problem*> decompose();
-	    virtual void solver(Solution* s);
+	    virtual void simplySolve(Solution* s);
 };
 
 #endif /* _PROBLEM_HPP_ */
