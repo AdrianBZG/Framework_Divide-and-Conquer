@@ -8,7 +8,7 @@
 
 #include "headers/FibonacciS.hpp"
 
-FibonacciS::FibonacciS() : Solution::Solution() {
+FibonacciS::FibonacciS() {
 }
 
 FibonacciS::~FibonacciS() {
@@ -25,7 +25,7 @@ void FibonacciS::combine(pair<Solution*,Solution*> subSolutions) {
 	_n = n1+n2;
 }
 
-Solucion* FibonacciS::getInstance() {
+Solution* FibonacciS::getInstance() {
 	return new FibonacciS();
 }
 
