@@ -10,6 +10,7 @@
 #include <vector>
 #include <utility>
 #include <iostream>
+#include <algorithm>
 #include "Solution.hpp"
 
 using namespace std;
