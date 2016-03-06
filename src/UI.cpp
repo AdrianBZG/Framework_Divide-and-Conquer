@@ -50,7 +50,7 @@ void UI::showMenu(void) {
         cout << "c. Generate random test vectors with defined problems size\n";
         cout << "d. Run and show statistics for defined vector (MS+BS)\n";
         cout << "e. Run and show statistics of defined problems size (MS+BS)\n";
-        cout << "f. Run full study (t=10, t=50, t=100, t=1000, t=10000, t=100000; MS+BS)\n";
+        cout << "f. Run full study (t=10, t=100, t=1000, t=2500; MS+BS)\n";
         cout << "g. Perform matrix multiplication (Strassen Algorithm)\n";
         cout << "h. Exit\n";
         cout << "=====================================================\n";
