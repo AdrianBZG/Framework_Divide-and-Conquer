@@ -11,7 +11,7 @@ SRC_DIR=.
 CXX=g++
 
 # Source files
-SOURCES = main.cpp Framework.cpp Problem.cpp Solution.cpp FibonacciP.cpp FibonacciS.cpp MergeSortP.cpp MergeSortS.cpp BubbleSort.cpp
+SOURCES = main.cpp Framework.cpp Problem.cpp Solution.cpp FibonacciP.cpp FibonacciS.cpp MergeSortP.cpp MergeSortS.cpp StrassenP.cpp BubbleSort.cpp
 
 # Work out names of object files from sources
 #OBJECTS = $(SOURCES:.cpp=.o)
@@ -24,6 +24,7 @@ OBJECTS=$(OBJ_DIR)/main.o \
 	$(OBJ_DIR)/MergeSortP.o \
 	$(OBJ_DIR)/MergeSortS.o \
 	$(OBJ_DIR)/BubbleSort.o \
+	$(OBJ_DIR)/StrassenP.o \
 
 # Flags
 CXXFLAGS = -g -O2 -std=c++11 -I.
@@ -52,3 +53,4 @@ $(OBJ_DIR)/FibonacciS.o: headers/FibonacciS.hpp
 $(OBJ_DIR)/MergeSortP.o: headers/MergeSortP.hpp
 $(OBJ_DIR)/MergeSortS.o: headers/MergeSortS.hpp
 $(OBJ_DIR)/BubbleSort.o: headers/BubbleSort.hpp
+$(OBJ_DIR)/StrassenP.o: headers/StrassenP.hpp

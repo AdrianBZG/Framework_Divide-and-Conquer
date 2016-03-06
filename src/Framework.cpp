@@ -16,7 +16,7 @@ void Framework::divideAndConquer(Problem* p, Solution* s){
 	if (p->isSimple()){
 		p->simplySolve(s);
 	}
-	else{
+	else {
 		pair<Problem*,Problem*> subProblems;
 		pair<Solution*,Solution*> subSolutions;
 		subProblems = p->decompose();
