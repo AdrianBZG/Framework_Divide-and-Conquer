@@ -38,6 +38,7 @@ void UI::showMenu(void) {
     //Here we show the menu
     char opcion = '0';
     int aux, aux2, aux3;
+    const int MAX_INT_NUMBER = 2147483646;
     string str1;
     
     do {
@@ -171,7 +172,7 @@ void UI::showMenu(void) {
                 }
 	            
 	            //Gettings min, average and max from statistics
-	            int minMS = 999999, minBS = 999999;
+	            int minMS = MAX_INT_NUMBER, minBS = MAX_INT_NUMBER;
 	            int aveMS = 0, aveBS = 0;
 	            int maxMS = 0, maxBS = 0;
 	            for(int i = 0; i < 10; i++) {
@@ -235,7 +236,7 @@ void UI::showMenu(void) {
                 }
 	            
 	            //Gettings min, average and max from statistics
-	            int minMS = 999999, minBS = 999999;
+	            int minMS = MAX_INT_NUMBER, minBS = MAX_INT_NUMBER;
 	            int aveMS = 0, aveBS = 0;
 	            int maxMS = 0, maxBS = 0;
 	            for(int i = 0; i < 10; i++) {
@@ -291,7 +292,7 @@ void UI::showMenu(void) {
                 }
 	            
 	            //Gettings min, average and max from statistics
-	            minMS = 999999, minBS = 999999;
+	            minMS = MAX_INT_NUMBER, minBS = MAX_INT_NUMBER;
 	            aveMS = 0, aveBS = 0;
 	            maxMS = 0, maxBS = 0;
 	            for(int i = 0; i < 10; i++) {
@@ -323,6 +324,118 @@ void UI::showMenu(void) {
 	            cout << "BubbleSort\t\t\tMin\tAverage\tMax" << endl;
 	            cout << "\t\t\t\t"<< minBS << "\t" << aveBS << "\t" << maxBS << endl << endl;
                 //End t=100
+                
+                //For t=1000
+                generateRandomVectors(1000);
+                statistics.clear();
+                statistics.resize(10); //10 for MS and 10 for BS, n=10 always (An Statistics object is a pair First (MS), Second (BS))
+                
+                for(int i = 0; i < 10; i++) {
+                    //MS
+                    Problem* problem = new MergeSortP(randomVectors[i]);
+    	            Solution* solution = new MergeSortS();
+	                Framework* framework = new Framework();
+	                framework->divideAndConquer(problem, solution);
+	                statistics[i].addToFirst(problem->getCount());
+	                delete problem;
+	                delete solution;
+	                //
+	                //BS
+	                BubbleSort bs(randomVectors[i]);
+            	    bs.sort();
+	                statistics[i].addToSecond(bs.getCount());
+	                //
+                }
+	            
+	            //Gettings min, average and max from statistics
+	            minMS = MAX_INT_NUMBER, minBS = MAX_INT_NUMBER;
+	            aveMS = 0, aveBS = 0;
+	            maxMS = 0, maxBS = 0;
+	            for(int i = 0; i < 10; i++) {
+	                //Average accum
+	                aveMS += statistics[i].getFirst();
+	                aveBS += statistics[i].getSecond();
+	                //
+	                
+	                //Min
+	                if(statistics[i].getFirst() < minMS) minMS = statistics[i].getFirst();
+	                if(statistics[i].getSecond() < minBS) minBS = statistics[i].getSecond();
+	                //
+	                
+	                //Max
+	                if(statistics[i].getFirst() > maxMS) maxMS = statistics[i].getFirst();
+	                if(statistics[i].getSecond() > maxBS) maxBS = statistics[i].getSecond();
+	                //
+	            }
+	            
+	            //Final operation to calculate the average
+	            aveMS /= 10;
+	            aveBS /= 10;
+	            //
+	            
+	            //Showing statistics for this study
+	            cout << endl << "Statistics (Size = " << randomVectors[0].size() << "):" << endl;
+	            cout << "MergeSort\t\t\tMin\tAverage\tMax" << endl;
+	            cout << "\t\t\t\t"<< minMS << "\t" << aveMS << "\t" << maxMS << endl << endl;
+	            cout << "BubbleSort\t\t\tMin\tAverage\tMax" << endl;
+	            cout << "\t\t\t\t"<< minBS << "\t" << aveBS << "\t" << maxBS << endl << endl;
+                //End t=1000
+                
+                //For t=2500
+                generateRandomVectors(2500);
+                statistics.clear();
+                statistics.resize(10); //10 for MS and 10 for BS, n=10 always (An Statistics object is a pair First (MS), Second (BS))
+                
+                for(int i = 0; i < 10; i++) {
+                    //MS
+                    Problem* problem = new MergeSortP(randomVectors[i]);
+    	            Solution* solution = new MergeSortS();
+	                Framework* framework = new Framework();
+	                framework->divideAndConquer(problem, solution);
+	                statistics[i].addToFirst(problem->getCount());
+	                delete problem;
+	                delete solution;
+	                //
+	                //BS
+	                BubbleSort bs(randomVectors[i]);
+            	    bs.sort();
+	                statistics[i].addToSecond(bs.getCount());
+	                //
+                }
+	            
+	            //Gettings min, average and max from statistics
+	            minMS = MAX_INT_NUMBER, minBS = MAX_INT_NUMBER;
+	            aveMS = 0, aveBS = 0;
+	            maxMS = 0, maxBS = 0;
+	            for(int i = 0; i < 10; i++) {
+	                //Average accum
+	                aveMS += statistics[i].getFirst();
+	                aveBS += statistics[i].getSecond();
+	                //
+	                
+	                //Min
+	                if(statistics[i].getFirst() < minMS) minMS = statistics[i].getFirst();
+	                if(statistics[i].getSecond() < minBS) minBS = statistics[i].getSecond();
+	                //
+	                
+	                //Max
+	                if(statistics[i].getFirst() > maxMS) maxMS = statistics[i].getFirst();
+	                if(statistics[i].getSecond() > maxBS) maxBS = statistics[i].getSecond();
+	                //
+	            }
+	            
+	            //Final operation to calculate the average
+	            aveMS /= 10;
+	            aveBS /= 10;
+	            //
+	            
+	            //Showing statistics for this study
+	            cout << endl << "Statistics (Size = " << randomVectors[0].size() << "):" << endl;
+	            cout << "MergeSort\t\t\tMin\tAverage\tMax" << endl;
+	            cout << "\t\t\t\t"<< minMS << "\t" << aveMS << "\t" << maxMS << endl << endl;
+	            cout << "BubbleSort\t\t\tMin\tAverage\tMax" << endl;
+	            cout << "\t\t\t\t"<< minBS << "\t" << aveBS << "\t" << maxBS << endl << endl;
+                //End t=2500
                 
                 
                 waitForKey();
