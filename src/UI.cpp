@@ -116,7 +116,7 @@ void UI::showMenu(void) {
                 
                 waitForKey();
                 break;
-            case 'd':
+            case 'd': {
                 cout << "\n\n\n\n\n\n\n\n\n\n" << endl;
                 system("clear"); //Clean the screen
                 statistics.clear();
@@ -144,6 +144,17 @@ void UI::showMenu(void) {
 	            cout << endl << "Statistics:" << endl;
 	            cout << "Comparisons\t\t\tMergeSort\tBubbleSort" << endl;
 	            cout << "Size: " << definedVector.size() << "\t\t\t"<< statistics[0].getFirst()[0] << "\t\t" << statistics[0].getSecond()[0] << endl;
+                
+                waitForKey();
+                break;
+            }
+            case 'g':
+                cout << "\n\n\n\n\n\n\n\n\n\n" << endl;
+                system("clear"); //Clean the screen
+                
+                StrassenP strassenProblem (definedMatrixA, definedMatrixB);
+	            cout << "\nResult (Matrix multiplication with Strassen Algorithm):" << endl;
+	            strassenProblem.init();
                 
                 waitForKey();
                 break;
