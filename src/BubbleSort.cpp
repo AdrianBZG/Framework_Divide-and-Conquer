@@ -31,6 +31,7 @@ void BubbleSort::sort() {
 		for(unsigned j = 0; j < getArray().size() - 1 - i; j++) {
 			if(getArray()[j] > getArray()[j+1])
 			{
+				count_++; //Statistics
 				aux=getArray()[j];
 				setArrayItem(j, getArray()[j+1]);
 				setArrayItem(j+1, aux);

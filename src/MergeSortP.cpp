@@ -29,11 +29,16 @@ pair<Problem*,Problem*> MergeSortP::decompose() {
 	return subProblems;
 }
 
+int& MergeSortP::getCount () {
+	return count_;
+}
+
 void MergeSortP::simplySolve(Solution* s) {
 	if (array_.size() == 1){
 		vector<int> U;
 		U.push_back(array_[0]);
 		array_ = U;
+		count_++; //Statistics
 	} else if (array_.size() == 2) {
 		vector<int> U = array_;
 		//Swap it if it's not correctly ordered
@@ -42,6 +47,7 @@ void MergeSortP::simplySolve(Solution* s) {
 			U[0] = U[1];
 			U[1] = aux;
 		}
+		count_++; //Statistics
 		//
 		array_ = U;
 	} else if (array_.size() > 2) {
@@ -49,7 +55,10 @@ void MergeSortP::simplySolve(Solution* s) {
 		vector<int> U = array_;
 		sort(U.begin(), U.end());
 		array_ = U;
+		count_++; //Statistics
 		//
 	}
 	((MergeSortS*)s)->setValue(array_);
 }
+
+int MergeSortP::count_ = 0;

@@ -45,11 +45,13 @@ void MergeSortS::combine(pair<Solution*,Solution*> subSolutions) {
 		{
 			array_[k] = a1[i];
 			i++;
+			count_++; //Statistics
 		}
 		else
 		{
 			array_[k] = a2[j];
 			j++;
+			count_++; //Statistics
 		}
 	}
 }
@@ -58,6 +60,12 @@ Solution* MergeSortS::getInstance() {
 	return new MergeSortS();
 }
 
+int& MergeSortS::getCount () {
+	return count_;
+}
+
 void MergeSortS::setValue(vector<int> array) {
 	array_ = array;
 }
+
+int MergeSortS::count_ = 0;

@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <iostream>
 #include <cstdlib>
+#include <memory>
 
 //Include the mandatory files to use the Framework
 #include "headers/Framework.hpp"
@@ -23,6 +24,10 @@
 #include "headers/BubbleSort.hpp"
 //
 
+//Statitics Class
+#include "headers/Statistics.hpp"
+//
+
 using namespace std;
 
 int main(int argc, char **argv) {
@@ -34,7 +39,8 @@ int main(int argc, char **argv) {
 		exit(-1);
 	}*/
 	
-    vector<int> arrayToSort = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3};
+    vector<int> arrayToSort = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3,3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3,3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3};
+    int c1 = 0;
 	Problem* problem = new MergeSortP(arrayToSort);
 	Solution* solution = new MergeSortS();
 	Framework* framework = new Framework();
@@ -42,11 +48,15 @@ int main(int argc, char **argv) {
 	cout << "\nResult (MergeSort):" << endl;
 	solution->solve();
 	
+	Statistics statistics;
+	statistics.addToFirst(problem->getCount() + solution->getCount());
+	cout << "Number of comparisons: " << statistics.getFirst()[0] << endl;
 	
 	BubbleSort bs(arrayToSort);
 	bs.sort();
 	cout << "\nResult (BubbleSort):" << endl;
 	bs.print();
+	cout << "Number of comparisons: " << bs.getCount() << endl;
 	
 	
 	/* Testing Strassen multiplication:

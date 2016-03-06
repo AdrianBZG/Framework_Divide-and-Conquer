@@ -21,3 +21,6 @@ pair<Problem*,Problem*> Problem::decompose() {
 void Problem::simplySolve(Solution* s) {
 }
 
+int& Problem::getCount() {
+}
+

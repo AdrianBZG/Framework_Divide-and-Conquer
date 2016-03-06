@@ -12,6 +12,7 @@
 class MergeSortS: public Solution {
     private:
 	    vector<int> array_;
+	    static int count_;
 	    
     public:
 	    MergeSortS();
@@ -22,6 +23,8 @@ class MergeSortS: public Solution {
 	    Solution* getInstance();
 
 	    void setValue(vector<int>);
+	    
+	    int& getCount ();
 };
 
 #endif /* _MERGESORTS_HPP_ */

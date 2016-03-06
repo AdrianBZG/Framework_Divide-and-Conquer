@@ -13,6 +13,7 @@
 class MergeSortP: public Problem {
     private:
 	    vector<int> array_;
+	    static int count_;
 	    
     public:
 	    MergeSortP(vector<int>);
@@ -21,6 +22,8 @@ class MergeSortP: public Problem {
 	    bool isSimple();
 	    pair<Problem*,Problem*> decompose();
 	    void simplySolve(Solution* s);
+	    
+	    int& getCount ();
 };
 
 #endif /* _MERGESORTP_HPP_ */

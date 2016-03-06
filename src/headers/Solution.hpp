@@ -21,6 +21,8 @@ class Solution {
 	    virtual void solve();
 	    virtual void combine(pair<Solution*,Solution*>);
 	    virtual Solution* getInstance();
+	    
+	    virtual int& getCount ();
 };
 
 #endif /* _SOLUTION_HPP_ */

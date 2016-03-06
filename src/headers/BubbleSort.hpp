@@ -18,6 +18,7 @@ using namespace std;
 class BubbleSort {
     private:
 	    vector<int> array_;
+	    int count_ = 0;
 	    
     public:
 	    BubbleSort(vector<int>);
@@ -28,6 +29,8 @@ class BubbleSort {
 
 	    void print();
 	    void sort();
+	    
+	    inline int getCount () { return count_; }
 };
 
 #endif /* _BUBBLESORT_HPP_ */

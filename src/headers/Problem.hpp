@@ -10,6 +10,7 @@
 #include <vector>
 #include <utility>
 #include <iostream>
+#include <memory>
 #include <algorithm>
 #include "Solution.hpp"
 
@@ -23,6 +24,8 @@ class Problem {
 	    virtual bool isSimple();
 	    virtual pair<Problem*,Problem*> decompose();
 	    virtual void simplySolve(Solution* s);
+	    
+	    virtual int& getCount ();
 };
 
 #endif /* _PROBLEM_HPP_ */
