@@ -12,6 +12,7 @@
 #include <cstdio>
 #include <iostream>
 #include <cstdlib>
+#include <random>
 
 //Include the mandatory files to use the Framework
 #include "headers/Framework.hpp"

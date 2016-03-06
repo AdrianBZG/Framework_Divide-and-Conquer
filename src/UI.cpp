@@ -167,8 +167,14 @@ void UI::showMenu(void) {
 }
 
 void UI::generateRandomVectors(int problemSize) {
-    //
-    //
+    randomVectors.clear();
+    randomVectors.resize(10);
+    for(int i = 0; i < 10; i++) {
+        for(int j = 0; j < problemSize; j++) {
+            if(j == 0) randomVectors[i].resize(problemSize);
+            randomVectors[i][j] = (rand() % 30000) + 1;
+        }
+    }
 }
 
 //
