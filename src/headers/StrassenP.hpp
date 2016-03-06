@@ -31,6 +31,9 @@ class StrassenP {
 	    inline vector< vector<int> > getMatrixC() { return matrixC_; }
 	    inline void setMatrixC(vector< vector<int> > newC) { matrixC_ = newC; }
 	    inline int getSize() { return size_; }
+	    
+	    bool isSimple(int);
+	    void simplySolve(vector< vector<int> >, vector< vector<int> >, vector< vector<int> >&, int);
 
         void init();
 	    void solveRecursively(vector< vector<int> >&, vector< vector<int> >&, vector< vector<int> >&, int);

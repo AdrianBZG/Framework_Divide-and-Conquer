@@ -21,7 +21,7 @@ StrassenP::~StrassenP() {
 }
 
 void StrassenP::init() {
-	unsigned int m = pow(2, int(ceil(log2(getSize()))));
+    unsigned int m = pow(2, int(ceil(log2(getSize()))));
     vector<int> inner(m);
     vector< vector<int> > APrep(m, inner), BPrep(m, inner), CPrep(m, inner);
 	
@@ -57,8 +57,8 @@ void StrassenP::solve(vector< vector<int> > &M1, vector< vector<int> > &M2, vect
 }
 
 void StrassenP::solveRecursively(vector< vector<int> > &M1, vector< vector<int> > &M2, vector< vector<int> > &RM, int size) {
-	if (size <= 1) { // Simple case
-        basicMul(M1, M2, RM, size);
+    if (isSimple(size)) { // Simple case
+        simplySolve(M1, M2, RM, size);
         return;
     }
     else { // Not a simple case
@@ -169,4 +169,12 @@ void StrassenP::basicMul(vector< vector<int> > M1, vector< vector<int> > M2, vec
             }
         }
     }
+}
+
+bool StrassenP::isSimple(int size) {
+    return (size == 1);
+}
+
+void StrassenP::simplySolve(vector< vector<int> > M1, vector< vector<int> > M2, vector< vector<int> > &RM, int size) {
+    basicMul(M1, M2, RM, size);
 }
