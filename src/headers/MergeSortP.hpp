@@ -24,6 +24,7 @@ class MergeSortP: public Problem {
 	    void simplySolve(Solution* s);
 	    
 	    int& getCount ();
+	    void resetCount();
 };
 
 #endif /* _MERGESORTP_HPP_ */

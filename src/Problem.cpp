@@ -24,3 +24,6 @@ void Problem::simplySolve(Solution* s) {
 int& Problem::getCount() {
 }
 
+void Problem::resetCount() {
+}
+

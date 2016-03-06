@@ -68,4 +68,8 @@ void MergeSortS::setValue(vector<int> array) {
 	array_ = array;
 }
 
+void MergeSortS::resetCount() {
+	count_ = 0;
+}
+
 int MergeSortS::count_ = 0;

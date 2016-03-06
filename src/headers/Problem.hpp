@@ -26,6 +26,7 @@ class Problem {
 	    virtual void simplySolve(Solution* s);
 	    
 	    virtual int& getCount ();
+	    virtual void resetCount ();
 };
 
 #endif /* _PROBLEM_HPP_ */

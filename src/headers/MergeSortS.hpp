@@ -25,6 +25,7 @@ class MergeSortS: public Solution {
 	    void setValue(vector<int>);
 	    
 	    int& getCount ();
+	    void resetCount();
 };
 
 #endif /* _MERGESORTS_HPP_ */

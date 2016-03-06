@@ -4,28 +4,8 @@
     Date: 05/03/2016
 */
 
-#include <cstdio>
-#include <iostream>
-#include <cstdlib>
-#include <memory>
-
-//Include the mandatory files to use the Framework
-#include "headers/Framework.hpp"
-//
-//Include the specific problems implementations
-#include "headers/FibonacciP.hpp"
-#include "headers/FibonacciS.hpp"
-#include "headers/MergeSortP.hpp"
-#include "headers/MergeSortS.hpp"
-#include "headers/StrassenP.hpp"
-//
-
-//BubbleSort (Not using framework, cause not using Divide and Conquer approach)
-#include "headers/BubbleSort.hpp"
-//
-
-//Statitics Class
-#include "headers/Statistics.hpp"
+//Include the User Interface
+#include "headers/UI.hpp"
 //
 
 using namespace std;
@@ -39,7 +19,10 @@ int main(int argc, char **argv) {
 		exit(-1);
 	}*/
 	
-    vector<int> arrayToSort = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3,3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3,3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3};
+	UI ui1;
+    ui1.init();
+	
+    /*vector<int> arrayToSort = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3,3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3,3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3};
     int c1 = 0;
 	Problem* problem = new MergeSortP(arrayToSort);
 	Solution* solution = new MergeSortS();
@@ -56,7 +39,7 @@ int main(int argc, char **argv) {
 	bs.sort();
 	cout << "\nResult (BubbleSort):" << endl;
 	bs.print();
-	cout << "Number of comparisons: " << bs.getCount() << endl;
+	cout << "Number of comparisons: " << bs.getCount() << endl;*/
 	
 	
 	/* Testing Strassen multiplication:
@@ -73,7 +56,7 @@ int main(int argc, char **argv) {
 	
 	//Initialize matrix data
 	//Matrix A
-	vector< vector<int> > matA;
+	/*vector< vector<int> > matA;
 	vector<int> auxRow1 = {1, 2};
 	vector<int> auxRow2 = {3, 4};
 	matA.push_back(auxRow1);
@@ -88,5 +71,5 @@ int main(int argc, char **argv) {
 	
 	StrassenP strassenProblem (matA, matB);
 	cout << "\nResult (Matrix multiplication with Strassen Algorithm):" << endl;
-	strassenProblem.init();
+	strassenProblem.init();*/
 }

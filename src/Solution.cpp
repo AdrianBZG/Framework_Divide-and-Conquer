@@ -23,3 +23,6 @@ Solution* Solution::getInstance() {
 
 int& Solution::getCount() {
 }
+
+void Solution::resetCount() {
+}

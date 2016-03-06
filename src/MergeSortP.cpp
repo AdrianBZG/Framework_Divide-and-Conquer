@@ -61,4 +61,8 @@ void MergeSortP::simplySolve(Solution* s) {
 	((MergeSortS*)s)->setValue(array_);
 }
 
+void MergeSortP::resetCount() {
+	count_ = 0;
+}
+
 int MergeSortP::count_ = 0;
