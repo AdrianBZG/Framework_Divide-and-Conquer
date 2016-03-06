@@ -20,9 +20,3 @@ void Solution::combine(pair<Solution*,Solution*> subSolutions) {
 
 Solution* Solution::getInstance() {
 }
-
-int& Solution::getCount() {
-}
-
-void Solution::resetCount() {
-}

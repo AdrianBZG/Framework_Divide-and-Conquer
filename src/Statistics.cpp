@@ -13,7 +13,7 @@ Statistics::~Statistics() {
 }
 
 void Statistics::clear() {
-    first_.clear();
-    second_.clear();
+    first_ = 0;
+    second_ = 0;
 }
 
