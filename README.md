@@ -5,7 +5,7 @@
 
 # Description
 
-Framework to solve Divide and Conquer in an easy way, you just need to define the specific Problem characteristics and the Framework will solve it for you with a D&amp;C approach.
+Framework to solve Divide and Conquer problems in an easy way, you just need to define the specific Problem characteristics and the Framework will solve it for you with a D&amp;C approach.
 Algorithms included: MergeSort, Fibonacci, Strassen Matrix Multiplication. Also implemented a complexity study between MergeSort and BubbleSort algorithms.
 
 # Dependencies
@@ -13,7 +13,7 @@ Algorithms included: MergeSort, Fibonacci, Strassen Matrix Multiplication. Also 
 ```sh
 $ sudo apt-get install build-essential 
 ```
-Uses *C++11*
+Uses *C++14*
 
 # Build Status
 ![](http://i.imgur.com/7gvWrxI.png?1)
@@ -27,7 +27,7 @@ $ make
 
 
 # How to execute?
-The result of the compilation is placed inside /src/compiled folder, with the name DCframework, to execute it just use ./src/compiled/RAMmachine from the root directory
+The result of the compilation is placed inside /src/compiled folder, with the name DCframework, to execute it just use ./src/compiled/DCframework from the root directory
 
 # Download source code
 
