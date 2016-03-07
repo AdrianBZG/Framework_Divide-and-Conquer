@@ -21,29 +21,29 @@ StrassenP::~StrassenP() {
 }
 
 void StrassenP::init() {
-    unsigned int m = pow(2, int(ceil(log2(getSize()))));
-    vector<int> inner(m);
-    vector< vector<int> > APrep(m, inner), BPrep(m, inner), CPrep(m, inner);
+    unsigned int nextPowerOfTwo = pow(2, int(ceil(log2(getSize()))));
+    vector<int> innerMatrix(nextPowerOfTwo);
+    vector< vector<int> > auxMatrixA(nextPowerOfTwo, innerMatrix), auxMatrixB(nextPowerOfTwo, innerMatrix), auxMatrixC(nextPowerOfTwo, innerMatrix);
 	
     for(unsigned int i = 0; i < getSize() / 2; i++) {
         for (unsigned int j = 0; j < getSize() / 2; j++) {
-            APrep[i][j] = getMatrixA()[i][j];
-            BPrep[i][j] = getMatrixB()[i][j];
+            auxMatrixA[i][j] = getMatrixA()[i][j];
+            auxMatrixB[i][j] = getMatrixB()[i][j];
         }
     }
-    solve(APrep, BPrep, CPrep, m);
+    solve(auxMatrixA, auxMatrixB, auxMatrixC, nextPowerOfTwo);
 }
 
 void StrassenP::print() {
 	for (int i=0; i < getSize() / 2; i++) {
         for (int j=0; j < getSize() / 2; j++) {
-            cout << "\t";
-            if(j == 0) cout << "[";
+            cout << "\t\t";
+            if(j == 0) cout << "|";
             cout << getMatrixC()[i][j];
             if(j != (getSize() / 2) - 1) {
                 cout << ",";
             } else {
-                cout << "]";
+                cout << "|";
             }
         }
         cout << endl;
@@ -58,26 +58,25 @@ void StrassenP::solve(vector< vector<int> > &M1, vector< vector<int> > &M2, vect
 
 void StrassenP::solveRecursively(vector< vector<int> > &M1, vector< vector<int> > &M2, vector< vector<int> > &RM, int size) {
     if (isSimple(size)) { // Simple case
-        simplySolve(M1, M2, RM, size);
+        simplySolve(M1, M2, RM, size); //We perform the simply silve: a basic multiplication
         return;
     }
     else { // Not a simple case
         int newSize = size/2;
-        vector<int> inner (newSize);
+        vector<int> innerMatrix (newSize);
         vector< vector<int> > 
-            a11(newSize,inner), a12(newSize,inner), a21(newSize,inner), a22(newSize,inner),
-            b11(newSize,inner), b12(newSize,inner), b21(newSize,inner), b22(newSize,inner),
-            c11(newSize,inner), c12(newSize,inner), c21(newSize,inner), c22(newSize,inner),
-            p1(newSize,inner), p2(newSize,inner), p3(newSize,inner), p4(newSize,inner), 
-            p5(newSize,inner), p6(newSize,inner), p7(newSize,inner),
-            aResult(newSize,inner), bResult(newSize,inner);
+            a11(newSize,innerMatrix), a12(newSize,innerMatrix), a21(newSize,innerMatrix), a22(newSize,innerMatrix),
+            b11(newSize,innerMatrix), b12(newSize,innerMatrix), b21(newSize,innerMatrix), b22(newSize,innerMatrix),
+            c11(newSize,innerMatrix), c12(newSize,innerMatrix), c21(newSize,innerMatrix), c22(newSize,innerMatrix),
+            p1(newSize,innerMatrix), p2(newSize,innerMatrix), p3(newSize,innerMatrix), p4(newSize,innerMatrix), 
+            p5(newSize,innerMatrix), p6(newSize,innerMatrix), p7(newSize,innerMatrix),
+            aResult(newSize,innerMatrix), bResult(newSize,innerMatrix);
  
-        int i, j;
         
  
         // Divide in 4 sub-matrix:
-        for (i = 0; i < newSize; i++) {
-            for (j = 0; j < newSize; j++) {
+        for (unsigned i = 0; i < newSize; i++) {
+            for (unsigned j = 0; j < newSize; j++) {
                 a11[i][j] = M1[i][j];
                 a12[i][j] = M1[i][j + newSize];
                 a21[i][j] = M1[i + newSize][j];
@@ -90,33 +89,40 @@ void StrassenP::solveRecursively(vector< vector<int> > &M1, vector< vector<int> 
             }
         }
  
-        // Calculate p1 to p7:
+        // Now we are going to solve the 7 subproblems (p1...p7):
  
         sum(a11, a22, aResult, newSize); // a11 + a22
         sum(b11, b22, bResult, newSize); // b11 + b22
+        //Re-calling recursively to solve this subproblem
         solveRecursively(aResult, bResult, p1, newSize); // p1 = (a11+a22) * (b11+b22)
  
         sum(a21, a22, aResult, newSize); // a21 + a22
+        //Re-calling recursively to solve this subproblem
         solveRecursively(aResult, b11, p2, newSize); // p2 = (a21+a22) * (b11)
  
         sub(b12, b22, bResult, newSize); // b12 - b22
+        //Re-calling recursively to solve this subproblem
         solveRecursively(a11, bResult, p3, newSize); // p3 = (a11) * (b12 - b22)
  
         sub(b21, b11, bResult, newSize); // b21 - b11
+        //Re-calling recursively to solve this subproblem
         solveRecursively(a22, bResult, p4, newSize); // p4 = (a22) * (b21 - b11)
  
         sum(a11, a12, aResult, newSize); // a11 + a12
+        //Re-calling recursively to solve this subproblem
         solveRecursively(aResult, b22, p5, newSize); // p5 = (a11+a12) * (b22)   
  
         sub(a21, a11, aResult, newSize); // a21 - a11
         sum(b11, b12, bResult, newSize); // b11 + b12
+        //Re-calling recursively to solve this subproblem
         solveRecursively(aResult, bResult, p6, newSize); // p6 = (a21-a11) * (b11+b12)
  
         sub(a12, a22, aResult, newSize); // a12 - a22
         sum(b21, b22, bResult, newSize); // b21 + b22
+        //Re-calling recursively to solve this subproblem
         solveRecursively(aResult, bResult, p7, newSize); // p7 = (a12-a22) * (b21+b22)
  
-        // Calculate c21, c21, c11 and c22:
+        // Calculating the final submatrix c21, c21, c11 and c22:
  
         sum(p3, p5, c12, newSize); // c12 = p3 + p5
         sum(p2, p4, c21, newSize); // c21 = p2 + p4
@@ -129,9 +135,9 @@ void StrassenP::solveRecursively(vector< vector<int> > &M1, vector< vector<int> 
         sum(aResult, p6, bResult, newSize); // p1 + p3 + p6
         sub(bResult, p2, c22, newSize); // c22 = p1 + p3 - p2 + p6
  
-        // Group the results in the result matrix:
-        for (i = 0; i < newSize ; i++) {
-            for (j = 0 ; j < newSize ; j++) {
+        // Group the results in a result matrix:
+        for (unsigned i = 0; i < newSize ; i++) {
+            for (unsigned j = 0 ; j < newSize ; j++) {
                 RM[i][j] = c11[i][j];
                 RM[i][j + newSize] = c12[i][j];
                 RM[i + newSize][j] = c21[i][j];
@@ -142,39 +148,29 @@ void StrassenP::solveRecursively(vector< vector<int> > &M1, vector< vector<int> 
 }
 
 void StrassenP::sub(vector< vector<int> > M1, vector< vector<int> > M2, vector< vector<int> > &RM, int size) {
-	int i, j;
- 
-    for (i = 0; i < size; i++) {
-        for (j = 0; j < size; j++) {
+    for (unsigned i = 0; i < size; i++) {
+        for (unsigned j = 0; j < size; j++) {
             RM[i][j] = M1[i][j] - M2[i][j];
         }
     } 
 }
 
 void StrassenP::sum(vector< vector<int> > M1, vector< vector<int> > M2, vector< vector<int> > &RM, int size) {
-	int i, j;
- 
-    for (i = 0; i < size; i++) {
-        for (j = 0; j < size; j++) {
+    for (unsigned i = 0; i < size; i++) {
+        for (unsigned j = 0; j < size; j++) {
             RM[i][j] = M1[i][j] + M2[i][j];
         }
     }
 }
 
 void StrassenP::basicMul(vector< vector<int> > M1, vector< vector<int> > M2, vector< vector<int> > &RM, int size) {
-	for (int i = 0; i < size; i++) {
-        for (int k = 0; k < size; k++) {
-            for (int j = 0; j < size; j++) {
-                RM[i][j] += M1[i][k] * M2[k][j];
-            }
-        }
-    }
+    RM[0][0] = M1[0][0] * M2[0][0]; // O(1) operation
 }
 
 bool StrassenP::isSimple(int size) {
-    return (size == 1);
+    return (size == 1); //Just one element, we ended dividing the matrix
 }
 
 void StrassenP::simplySolve(vector< vector<int> > M1, vector< vector<int> > M2, vector< vector<int> > &RM, int size) {
-    basicMul(M1, M2, RM, size);
+    basicMul(M1, M2, RM, size); //We multiply the unique elements from matrix M1 and M2 and store it in RM; RM[0,0] = M1[0,0] * M2[0,0]
 }

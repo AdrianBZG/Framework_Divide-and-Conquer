@@ -26,4 +26,4 @@ void Framework::divideAndConquer(Problem* p, Solution* s){
 		divideAndConquer(subProblems.second, subSolutions.second);  //Subproblem 2
 		s->combine(subSolutions);
 	}
-};
+}

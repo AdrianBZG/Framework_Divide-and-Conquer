@@ -29,7 +29,7 @@ OBJECTS=$(OBJ_DIR)/main.o \
 	$(OBJ_DIR)/UI.o \
 
 # Flags
-CXXFLAGS = -g -Wno-unused-result -O2 -std=c++11 -I.
+CXXFLAGS = -g -Wno-unused-result -O2 -std=c++1y -pedantic -I.
 
 # Default target (to build all)
 all: ${TARGET}
