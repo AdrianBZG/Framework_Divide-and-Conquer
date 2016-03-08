@@ -55,8 +55,9 @@ class UI
         void waitForKey();
         
         void generateRandomVectors(int problemSize);
-        void showTable();
-        void doFullStudy();
+        void showTable(vector<int>); //Show the result table
+        void doStudy(int);  //Do a full study with 'int' problem size
+        void doSpecificStudy(vector<int>);
 };
 
 #endif
